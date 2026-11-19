@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <p class="eyebrow">Token launch radar &middot; sealed snapshot, DefiLlama</p>
+      <h1>Which protocol&rsquo;s token would be worth the most?</h1>
+      <p class="lede">Every protocol below records no token yet. The radar ranks them by an implied
+      value derived from the snapshot itself — each category&rsquo;s own market multiple, the
+      protocol&rsquo;s 7-day growth, and how long it has run with no token. Click any row for its
+      model breakdown and farm plan.</p>
+    </div>
+    <dl class="stats" id="stats"></dl>
+  </div>
+</header>
+
+<main>
+  <section class="panel controls" aria-label="Board controls">
+    <label>Search <input id="q" type="search" placeholder="name or slug…" autocomplete="off"></label>
+    <label>Category <select id="cat"><option value="">All categories</option></select></label>
+    <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+    <label class="check"><input id="wl" type="checkbox"> Watchlist only</label>
+    <button id="reset" type="button">Reset</button>
+    <p class="count" id="count"></p>
+  </section>
+
+  <section class="panel">
+    <h2>The board <span class="hint">click a column to sort &middot; click a row for its detail</span></h2>
+    <div class="table-wrap">
+      <table id="board">
+        <thead><tr>
+          <th data-sort="rank">#</th>
+          <th data-sort="name">Protocol</th>
+          <th data-sort="category">Category</th>
+          <th>Chains</th>
+          <th data-sort="tvl_usd">TVL</th>
+          <th data-sort="change_7d">7d</th>
+          <th data-sort="implied_value_usd">Implied value</th>
+          <th>Watchlist</th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="note" id="board-note"></p>
+  </section>
+
+  <section class="panel" id="detail" aria-label="Protocol detail"></section>
+
+  <section class="panel">
+    <h2>Live tokens — the market&rsquo;s own values</h2>
+    <p class="lede">These protocols already have a token that trades, so the board never ranks them.
+    They are shown apart as the reference the multiples are read from: each row&rsquo;s
+    market cap over its TVL is what a token of that kind is worth today.</p>
+    <div class="table-wrap">
+      <table id="live">
+        <thead><tr>
+          <th>Protocol</th><th>Category</th><th>TVL</th><th>Market cap</th><th>MCap / TVL</th>
+        </tr></thead>
+        <tbody id="live-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>How the radar works</h2>
+    <div id="method"></div>
+  </section>
+
+  <footer class="foot">
+    <p>Implied values are this entry&rsquo;s own claim, derived from the sealed snapshot only.
+    They do not predict whether or when any protocol issues a token. Snapshot as of
+    <span id="asof"></span>; source: DefiLlama protocols endpoint. Model
+    <span id="modelver"></span>.</p>
+  </footer>
+</main>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
